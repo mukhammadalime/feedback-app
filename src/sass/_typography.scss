@@ -1,0 +1,94 @@
+.primary-text {
+  color: $color-primary-2;
+  font-size: 2.4rem;
+  letter-spacing: -0.33px;
+  font-weight: 600;
+
+  @media (max-width: $phone) {
+    font-size: 1.8rem;
+    letter-spacing: -0.25px;
+  }
+}
+
+.primary-text-2 {
+  color: $color-primary-2;
+  font-size: 2rem;
+  letter-spacing: -0.25px;
+  font-weight: 600;
+
+  @media (max-width: $phone) {
+    font-size: 1.5rem;
+    letter-spacing: -0.19px;
+  }
+}
+
+.primary-text-3 {
+  color: $color-primary-2;
+  font-size: 1.8rem;
+  letter-spacing: -0.25px;
+  font-weight: 600;
+
+  @media (max-width: $phone) {
+    font-size: 1.3rem;
+    letter-spacing: -0.18px;
+  }
+}
+
+.primary-text-4 {
+  color: $color-primary-2;
+  font-size: 1.4rem;
+  letter-spacing: -0.2px;
+  font-weight: 600;
+
+  @media (max-width: $phone) {
+    font-size: 1.3rem;
+    letter-spacing: 0;
+  }
+}
+
+.body-1 {
+  color: $color-primary-3;
+  font-size: 1.6rem;
+  font-weight: 400;
+
+  @media (max-width: $tablet) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: $phone) {
+    font-size: 1.3rem;
+  }
+}
+
+.body-2 {
+  color: $color-primary-2;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.body-3 {
+  color: $color-primary-3;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.body-4 {
+  color: $color-primary-3;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.active {
+  background-color: $color-blue;
+  color: $color-white;
+
+  &:hover {
+    background-color: $color-blue;
+  }
+}
+
+.nav-phone-hidden {
+  @media (max-width: $phone) {
+    display: none;
+  }
+}

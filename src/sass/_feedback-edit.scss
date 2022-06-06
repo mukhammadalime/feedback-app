@@ -1,0 +1,35 @@
+.edit-category-input {
+  position: relative;
+}
+
+.category-sort-box {
+  position: absolute;
+  top: 6.4rem;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.planned-status-box {
+  position: absolute;
+  top: 6.4rem;
+  left: 0;
+  width: 100%;
+}
+
+.edit-feed__delete-btn {
+  grid-row: 6/7;
+  grid-column: 1/2;
+  justify-self: left;
+
+  @media (max-width: $phone) {
+    grid-row: 7/8;
+    width: 100%;
+    margin-top: -1rem;
+  }
+}
+.edit-feed__btns {
+  grid-row: 6/7;
+  grid-column: 1/2;
+  justify-self: right;
+}

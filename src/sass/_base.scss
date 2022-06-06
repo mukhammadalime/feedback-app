@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  background-color: $color-secondary;
+  // background-color: #979797;
+  width: 100vw;
+  height: auto;
+
+  // padding-top: 9.4rem;
+
+  // @media (max-width: $tablet) {
+  //   padding-top: 5.6rem;
+  // }
+
+  // @media (max-width: $phone) {
+  //   padding-top: 0;
+  // }
+}
+.hidden {
+  display: none;
+}

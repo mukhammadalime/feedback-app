@@ -1,0 +1,61 @@
+.sort-box {
+  position: absolute;
+  background-color: $color-white;
+  height: auto;
+  width: 25.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+  top: 8.8rem;
+  left: 22rem;
+
+  @media (max-width: $phone) {
+    top: 8rem;
+    left: 2rem;
+  }
+
+  &__item {
+    font-size: 1.6rem;
+    height: 4.725rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $color-primary-3;
+    padding: 0 2.5rem;
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgb(151, 151, 151, 0.5);
+    }
+
+    &:hover {
+      color: $color-purple;
+    }
+  }
+
+  &__tick-icon {
+  }
+}
+
+.sorting-input {
+  &--sort {
+    background-color: $color-secondary-hover;
+    border-radius: 0.5rem;
+    height: 4.8rem;
+    width: 100%;
+    border: none;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    position: relative;
+    cursor: pointer;
+
+    &--text {
+      font-size: 1.5rem;
+      color: $color-primary-2;
+    }
+  }
+}
