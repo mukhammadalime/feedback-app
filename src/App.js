@@ -1,8 +1,15 @@
+import Suggestions from "./components/suggestions/Suggestions";
+import NavBar from "./components/navbar/NavBar";
+import FcontextProvider from "./store/FcontextProvider";
+
 const App = () => {
   return (
-    <container className="container">
-      <div className="">Hi there</div>
-    </container>
+    <FcontextProvider>
+      <div className="container">
+        <NavBar />
+        <Suggestions />
+      </div>
+    </FcontextProvider>
   );
 };
 

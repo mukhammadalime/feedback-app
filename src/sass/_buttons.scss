@@ -11,6 +11,8 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  outline: none;
+  border: none;
 
   @media (max-width: $phone) {
     padding: 0 1.8rem;
