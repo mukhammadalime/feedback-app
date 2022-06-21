@@ -1,5 +1,11 @@
+import { Link } from "react-router-dom";
+
 const AddFeedbackButton = () => {
-  return <button className="btn-purple">+ Add Feedback</button>;
+  return (
+    <Link to="/new-feedback" className="btn-purple">
+      + Add Feedback
+    </Link>
+  );
 };
 
 export default AddFeedbackButton;

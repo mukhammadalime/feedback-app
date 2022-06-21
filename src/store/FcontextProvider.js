@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FContext from "./Fcontext";
+import data from "../data/data";
 
 const FcontextProvider = (props) => {
   const [sorted, setSorted] = useState("Most Upvotes");
@@ -13,11 +14,15 @@ const FcontextProvider = (props) => {
     setFiltered(filteredBy);
   };
 
+  const addNewFeedbackHandler = () => {};
+
   const feedbackContext = {
     sortedBy: sorted,
     filteredBy: filtered,
+    feedbacks: data,
     changeSortedBy: changeSortedByHandler,
     changeFilterBy: changeFilterByHandler,
+    addNewFeedback: addNewFeedbackHandler,
   };
 
   return (

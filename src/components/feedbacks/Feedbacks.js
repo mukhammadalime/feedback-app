@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
-import Feedback from "../UI/Feedback";
-import data from "../../data/data";
+import Feedback from "./Feedback";
 import FContext from "../../store/Fcontext";
-import EmptySuggestions from "./EmptySuggestions";
+import EmptySuggestions from "../suggestions/EmptySuggestions";
 
 const Feedbacks = () => {
-  const { sortedBy, filteredBy } = useContext(FContext);
+  const { sortedBy, filteredBy, feedbacks } = useContext(FContext);
 
-  let filteredData = data.productRequests.filter((feedback) => {
+  let filteredData = feedbacks.productRequests.filter((feedback) => {
     return filteredBy === "all" ? feedback : feedback.category === filteredBy;
   });
 
