@@ -6,7 +6,7 @@ import EmptySuggestions from "../suggestions/EmptySuggestions";
 const Feedbacks = () => {
   const { sortedBy, filteredBy, feedbacks } = useContext(FContext);
 
-  let filteredData = feedbacks.productRequests.filter((feedback) => {
+  let filteredData = feedbacks.filter((feedback) => {
     return filteredBy === "all" ? feedback : feedback.category === filteredBy;
   });
 

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SelectedIcon from "../icons/SelectedIcon";
 
-const SelectCategory = () => {
+const SelectCategory = (props) => {
   const [selected, setSelected] = useState("Feature");
   const [sortClicked, setSortClicked] = useState(false);
 
@@ -9,10 +9,15 @@ const SelectCategory = () => {
     setSortClicked((prevState) => !prevState);
   };
 
+  useEffect(() => {
+    props.getCategoryInput(selected);
+  }, [props, selected]);
+
   const selectCategory = (e) => {
     const target = e.target.dataset.type;
     setSelected(target);
     setSortClicked(false);
+    props.getCategoryInput(selected);
   };
 
   const selectCategoryOptions = (

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import IllustrationEmptyIcon from "../icons/IllustrationEmptyIcon";
 
 const EmptySuggestions = () => {
@@ -10,9 +11,13 @@ const EmptySuggestions = () => {
           Got a suggestion? Found a bug that needs to be squashed? We love
           hearing about new ideas to improve our app.
         </p>
-        <div className="btn-purple" style={{ marginTop: "2rem" }}>
+        <Link
+          to="/new-feedback"
+          className="btn-purple"
+          style={{ marginTop: "2rem" }}
+        >
           + Add Feedback
-        </div>
+        </Link>
       </div>
     </div>
   );
