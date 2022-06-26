@@ -15,11 +15,7 @@ const AddOrEditFeedback = (props) => {
   const titleInputRef = useRef();
   const descriptionInputRef = useRef();
 
-  const goBackToSuggestions = () => {
-    navigate("/suggestions");
-  };
-
-  const goBackToFeedbackDetail = () => {
+  const goBack = () => {
     navigate(-1);
   };
 
@@ -81,14 +77,7 @@ const AddOrEditFeedback = (props) => {
 
   return (
     <div className="container-new-feed">
-      <div
-        className="btn-go-back"
-        onClick={
-          pathname === "new-feedback"
-            ? goBackToSuggestions
-            : goBackToFeedbackDetail
-        }
-      >
+      <div className="btn-go-back" onClick={goBack}>
         <img src="/assets/shared/icon-arrow-left.svg" alt="" />
         Go back
       </div>
@@ -159,7 +148,7 @@ const AddOrEditFeedback = (props) => {
 
         {pathname === "new-feedback" && (
           <div className="new-feed__btns">
-            <div className="btn-dark-blue" onClick={goBackToSuggestions}>
+            <div className="btn-dark-blue" onClick={goBack}>
               Cancel
             </div>
             <div className="btn-purple" onClick={addFeedbackHandler}>
@@ -177,7 +166,7 @@ const AddOrEditFeedback = (props) => {
               Delete
             </div>
             <div className="new-feed__btns edit-feed__btns">
-              <div className="btn-dark-blue" onClick={goBackToFeedbackDetail}>
+              <div className="btn-dark-blue" onClick={goBack}>
                 Cancel
               </div>
               <div className="btn-purple" onClick={editFeedbackHandler}>

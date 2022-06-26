@@ -14,14 +14,15 @@ const FeedbackDetail = (props) => {
     (feedback) => feedback.id === Number(params.feedbackId)
   );
 
-  const goToSuggestions = () => {
-    navigate("/suggestions");
-  };
-
   return (
     <div className="container-detail">
       <div className="detail__header">
-        <div className="btn-go-back" onClick={goToSuggestions}>
+        <div
+          className="btn-go-back"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <img
             src="/assets/shared/icon-arrow-left.svg"
             alt=""

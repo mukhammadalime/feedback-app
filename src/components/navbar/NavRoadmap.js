@@ -1,11 +1,17 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import NumberOfFeedbacks from "../utils/NumberOfFeedbacks";
 
 const NavRoadmap = () => {
+  const { plannedFeedbacks, liveFeedbacks, inProgressFeedbacks } =
+    NumberOfFeedbacks();
+
   return (
     <div className="roadmap">
       <div className="roadmap__name-box">
         <h4 className="roadmap__name primary-text-2">Roadmap</h4>
-        <div className="roadmap__view body-3">View</div>
+        <Link to="/roadmap" className="roadmap__view body-3">
+          View
+        </Link>
       </div>
 
       <div className="roadmap__planned">
@@ -20,7 +26,7 @@ const NavRoadmap = () => {
           className="roadmap__planned--number body-1"
           style={{ fontWeight: "600" }}
         >
-          2
+          {plannedFeedbacks.length}
         </h4>
       </div>
 
@@ -36,7 +42,7 @@ const NavRoadmap = () => {
           className="roadmap__planned--number body-1"
           style={{ fontWeight: "600" }}
         >
-          3
+          {inProgressFeedbacks.length}
         </h4>
       </div>
 
@@ -52,7 +58,7 @@ const NavRoadmap = () => {
           className="roadmap__planned--number body-1"
           style={{ fontWeight: "600" }}
         >
-          1
+          {liveFeedbacks.length}
         </h4>
       </div>
     </div>

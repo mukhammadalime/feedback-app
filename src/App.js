@@ -4,6 +4,7 @@ import FcontextProvider from "./store/FcontextProvider";
 import { Route, Routes, Navigate } from "react-router-dom";
 import AddOrEditFeedback from "./components/feedbacks/AddOrEditFeedback";
 import FeedbackDetail from "./components/feedbacks/FeedbackDetail";
+import RoadMap from "./components/roadmap/RoadMap";
 
 const App = () => {
   return (
@@ -20,14 +21,17 @@ const App = () => {
           }
         />
         <Route path="/new-feedback" element={<AddOrEditFeedback />} />
+
         <Route
           path="/feedback-detail/:feedbackId"
           element={<FeedbackDetail />}
         />
+
         <Route
           path="/edit-feedback/:feedbackId"
           element={<AddOrEditFeedback />}
         />
+        <Route path="/roadmap" element={<RoadMap />} />
       </Routes>
     </FcontextProvider>
   );

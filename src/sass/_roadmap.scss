@@ -42,7 +42,7 @@
 
   &__content {
     display: flex;
-    column-gap: 2rem;
+    column-gap: 3rem;
 
     @media (max-width: $tablet) {
       column-gap: 1rem;
@@ -204,6 +204,18 @@
 
   &__comments--num {
   }
+}
+
+.planned {
+  background-color: #f49f85;
+}
+
+.in-progress {
+  background-color: #ad1fea;
+}
+
+.live {
+  background-color: #62bcfa;
 }
 
 .planned-line {
