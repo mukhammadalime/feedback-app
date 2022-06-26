@@ -3,6 +3,7 @@ import NavBar from "./components/navbar/NavBar";
 import FcontextProvider from "./store/FcontextProvider";
 import { Route, Routes, Navigate } from "react-router-dom";
 import AddNewFeedback from "./components/feedbacks/AddNewFeedback";
+import FeedbackDetail from "./components/feedbacks/FeedbackDetail";
 
 const App = () => {
   return (
@@ -19,6 +20,10 @@ const App = () => {
           }
         />
         <Route path="/new-feedback" element={<AddNewFeedback />} />
+        <Route
+          path="/feedback-detail/:feedbackId"
+          element={<FeedbackDetail />}
+        />
       </Routes>
     </FcontextProvider>
   );

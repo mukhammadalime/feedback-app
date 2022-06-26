@@ -35,6 +35,7 @@ const Feedbacks = () => {
       {filteredData.map((feedback) => (
         <Feedback
           key={feedback.id}
+          id={feedback.id}
           upvotes={feedback.upvotes}
           title={feedback.title}
           description={feedback.description}
