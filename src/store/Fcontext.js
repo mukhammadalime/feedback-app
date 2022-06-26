@@ -7,6 +7,8 @@ const FContext = React.createContext({
   changeSortedBy: (sortedBy) => {},
   changeFilterBy: (filteredBy) => {},
   addNewFeedback: (newFeedback) => {},
+  editFeedback: (editingfeedback) => {},
+  deleteFeedback: (deletingFeedbackId) => {},
 });
 
 export default FContext;

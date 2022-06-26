@@ -23,11 +23,25 @@ const AddOrEditFeedback = (props) => {
     navigate(-1);
   };
 
+  // It is for finding editing feedback and put its title in the form
+  const editingFeedback = feedbackCtx.feedbacks.find(
+    (feedback) => feedback.id === Number(match.pathname.split("/")[2])
+  );
+
+  const getCategoryInput = (categoryValue) => {
+    categoryInput = categoryValue;
+  };
+
+  // This is for editing feedback
+  const getStatusInput = (statusValue) => {
+    statusInput = statusValue;
+  };
+
+  // Add new feedback
   const addFeedbackHandler = () => {
     const enteredTitle = titleInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
     const enteredCategory = categoryInput.toLowerCase();
-    // const enteredStatus = statusInput.toLowerCase();
     const id = feedbackCtx.feedbacks.length + 1;
 
     feedbackCtx.addNewFeedback({
@@ -43,17 +57,26 @@ const AddOrEditFeedback = (props) => {
     navigate("/suggestions");
   };
 
-  const editingFeedback = feedbackCtx.feedbacks.find(
-    (feedback) => feedback.id === Number(match.pathname.split("/")[2])
-  );
+  const editFeedbackHandler = () => {
+    const enteredTitle = titleInputRef.current.value;
+    const enteredDescription = descriptionInputRef.current.value;
+    const enteredStatus = statusInput.toLowerCase();
+    const enteredCategory = categoryInput.toLowerCase();
 
-  const getCategoryInput = (categoryValue) => {
-    categoryInput = categoryValue;
+    feedbackCtx.editFeedback({
+      id: editingFeedback.id,
+      title: enteredTitle,
+      category: enteredCategory,
+      status: enteredStatus,
+      description: enteredDescription,
+    });
+
+    navigate(-1);
   };
 
-  // This is for editing feedback
-  const getStatusInput = (statusValue) => {
-    statusInput = statusValue;
+  const deleteFeedbackHandler = () => {
+    feedbackCtx.deleteFeedback(editingFeedback.id);
+    navigate("/suggestions");
   };
 
   return (
@@ -72,7 +95,9 @@ const AddOrEditFeedback = (props) => {
 
       <div className="new-feed">
         <img
-          src="/assets/shared/icon-edit-feedback.svg"
+          src={`/assets/shared/icon-${
+            pathname === "edit-feedback" ? "edit" : "new"
+          }-feedback.svg`}
           alt=""
           className="new-feed__img"
         />
@@ -86,11 +111,26 @@ const AddOrEditFeedback = (props) => {
           <p className="body-4">Add a short, descriptive headline</p>
           <input
             type="text"
+            id="title"
             className="new-feed__title--input"
             ref={titleInputRef}
+            defaultValue={
+              pathname === "edit-feedback" ? editingFeedback.title : ""
+            }
           />
         </div>
-        <SelectCategory getCategoryInput={getCategoryInput} />
+
+        {pathname === "new-feedback" && (
+          <SelectCategory getCategoryInput={getCategoryInput} />
+        )}
+
+        {pathname === "edit-feedback" && (
+          <SelectCategory
+            getCategoryInput={getCategoryInput}
+            category={editingFeedback.category}
+          />
+        )}
+
         {pathname === "edit-feedback" && (
           <SelectStatus
             getStatusInput={getStatusInput}
@@ -111,6 +151,9 @@ const AddOrEditFeedback = (props) => {
             cols="30"
             rows="10"
             ref={descriptionInputRef}
+            defaultValue={
+              pathname === "edit-feedback" ? editingFeedback.description : ""
+            }
           ></textarea>
         </div>
 
@@ -127,12 +170,19 @@ const AddOrEditFeedback = (props) => {
 
         {pathname === "edit-feedback" && (
           <>
-            <div className="btn-red edit-feed__delete-btn">Delete</div>
+            <div
+              className="btn-red edit-feed__delete-btn"
+              onClick={deleteFeedbackHandler}
+            >
+              Delete
+            </div>
             <div className="new-feed__btns edit-feed__btns">
               <div className="btn-dark-blue" onClick={goBackToFeedbackDetail}>
                 Cancel
               </div>
-              <div className="btn-purple">Save Changes</div>
+              <div className="btn-purple" onClick={editFeedbackHandler}>
+                Save Changes
+              </div>
             </div>
           </>
         )}
