@@ -1,0 +1,6 @@
+- Add form validation
+- Implement adding comment, replying comment
+- Think about making SelectStatus and SelectCategory one component
+- Add firebase, firebase authentication
+- Create login, create account pages
+- Make it responsive
