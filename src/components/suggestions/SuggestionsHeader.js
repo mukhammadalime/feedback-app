@@ -5,17 +5,16 @@ import SelectedIcon from "../icons/SelectedIcon";
 import SuggestionsIcon from "../icons/SuggestionsIcon";
 import AddFeedbackButton from "../UI/AddFeedbackButton";
 
-// const selectOptions = [
-//   "Most Upvotes",
-//   "Least Upvotes",
-//   "Most Comments",
-//   "Least Comments",
-// ];
-
 const SuggestionsHeader = (props) => {
   const [sortClicked, setSortClicked] = useState(false);
   const [selected, setSelected] = useState("Most Upvotes");
   const feedbackContext = useContext(FContext);
+
+  let filteredData = feedbackContext.feedbacks.filter((feedback) => {
+    return feedbackContext.filteredBy === "all"
+      ? feedback
+      : feedback.category === feedbackContext.filteredBy;
+  });
 
   const sortByHandler = () => {
     setSortClicked((prevState) => !prevState);
@@ -49,22 +48,13 @@ const SuggestionsHeader = (props) => {
     </div>
   );
 
-  // const sortByOptions = (
-  //   <div className="sort-box" onClick={selectHandler}>
-  //     {selectOptions.map((item) => (
-  //       <div key={item} className="sort-box__item" data-type="most-upvotes">
-  //         {item}
-  //         {item === "Most Upvotes" && <SelectedIcon />}
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
-
   return (
     <header className="main__header">
       <div className="main__header--details">
         <SuggestionsIcon />
-        <h3 className="main__header--suggestions">6 Suggestions</h3>
+        <h3 className="main__header--suggestions">
+          {filteredData.length} Suggestions
+        </h3>
         <div className="main__header--sort-box">
           {sortClicked && sortByOptions}
           <p className="main__header--sort">Sort by :</p>
