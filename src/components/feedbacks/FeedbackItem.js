@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Feedback = (props) => {
   return (
-    <div className="feedback" key={props.id}>
+    <div className="feedback">
       <div className="btn-votes">
         <img
           src="/assets/shared/icon-arrow-up.svg"

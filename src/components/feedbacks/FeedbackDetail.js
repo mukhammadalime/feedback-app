@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import FContext from "../../store/Fcontext";
 import AddNewComment from "../comments/AddNewComment";
 import Comments from "../comments/Comments";
-import Feedback from "./Feedback";
+import FeedbackItem from "./FeedbackItem";
 
-const FeedbackDetail = () => {
+const FeedbackDetail = (props) => {
   const params = useParams();
   const navigate = useNavigate();
   const { feedbacks } = useContext(FContext);
@@ -14,14 +14,14 @@ const FeedbackDetail = () => {
     (feedback) => feedback.id === Number(params.feedbackId)
   );
 
-  const goToFeedbackHandler = () => {
+  const goToSuggestions = () => {
     navigate("/suggestions");
   };
 
   return (
     <div className="container-detail">
       <div className="detail__header">
-        <div className="btn-go-back" onClick={goToFeedbackHandler}>
+        <div className="btn-go-back" onClick={goToSuggestions}>
           <img
             src="/assets/shared/icon-arrow-left.svg"
             alt=""
@@ -30,12 +30,12 @@ const FeedbackDetail = () => {
           Go back
         </div>
 
-        <a href="feedback-edit.html" className="btn-blue">
+        <Link to={`/edit-feedback/${filteredFeedback.id}`} className="btn-blue">
           Edit Feedback
-        </a>
+        </Link>
       </div>
 
-      <Feedback
+      <FeedbackItem
         key={filteredFeedback.id}
         id={filteredFeedback.id}
         upvotes={filteredFeedback.upvotes}

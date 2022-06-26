@@ -46,13 +46,13 @@ const SelectCategory = (props) => {
   );
 
   return (
-    <div className="sorting-input">
+    <div className="sorting-input" style={{ zIndex: "100" }}>
       <h5 className="primary-text-4">Category</h5>
       <p className="body-4">Choose a category for your feedback</p>
       <div className="sorting-input--sort">
         <p className="sorting-input--sort--text">{selected}</p>
         <img
-          src={`assets/shared/icon-arrow-${sortClicked ? "up" : "down"}.svg`}
+          src={`/assets/shared/icon-arrow-${sortClicked ? "up" : "down"}.svg`}
           alt=""
           className="sorting-input--sort--icon"
           onClick={showCategories}
