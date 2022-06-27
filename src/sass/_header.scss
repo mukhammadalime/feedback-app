@@ -85,3 +85,49 @@
     // }
   }
 }
+
+.header {
+  height: 9rem;
+  background-color: $color-primary;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto min-content;
+  align-items: center;
+
+  &__logo {
+    font-size: 4rem;
+    color: $color-white;
+    margin-left: 6%;
+  }
+
+  &__auth {
+    width: 20rem;
+    display: flex;
+    column-gap: 2rem;
+  }
+
+  &__user {
+    &--img {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+    }
+  }
+
+  .login-logout-btn {
+    background-color: $color-purple;
+    color: $color-white;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 9rem;
+    height: 4rem;
+    font-size: 1.8rem;
+    align-self: center;
+    cursor: pointer;
+    &:hover {
+      background-color: $color-purple-hover;
+    }
+  }
+}

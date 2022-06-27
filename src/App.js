@@ -5,6 +5,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import AddOrEditFeedback from "./components/feedbacks/AddOrEditFeedback";
 import FeedbackDetail from "./components/feedbacks/FeedbackDetail";
 import RoadMap from "./components/roadmap/RoadMap";
+import MainHeader from "./components/header/MainHeader";
 
 const App = () => {
   return (
@@ -14,10 +15,13 @@ const App = () => {
         <Route
           path="/suggestions"
           element={
-            <div className="container">
-              <NavBar />
-              <Suggestions />
-            </div>
+            <>
+              <MainHeader />
+              <div className="container">
+                <NavBar />
+                <Suggestions />
+              </div>
+            </>
           }
         />
         <Route path="/new-feedback" element={<AddOrEditFeedback />} />

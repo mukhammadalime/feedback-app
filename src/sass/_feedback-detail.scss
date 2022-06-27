@@ -144,10 +144,22 @@
 }
 
 .comment__replies {
+  border-top: 2px;
   margin-left: 4.3rem;
+  position: relative;
 
   @media (max-width: $phone) {
     margin-left: 2.3rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: -1.7rem;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -208,6 +220,7 @@
   grid-template-columns: auto max-content;
   margin-left: 4.6rem;
   column-gap: 1.7rem;
+  margin-bottom: 2rem;
 
   &__textarea {
     height: 8rem;
