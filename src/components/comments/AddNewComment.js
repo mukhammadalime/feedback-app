@@ -27,7 +27,6 @@ const AddNewComment = () => {
     feedbackCtx.addComment({
       feedbackId: Number(feedbackId),
       content: enteredComment,
-      user: feedbackCtx.currentUser,
     });
     commentInputRef.current.value = "";
   };

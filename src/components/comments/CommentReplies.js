@@ -7,6 +7,8 @@ const CommentReplies = (props) => {
       {props.replies.map((reply) => (
         <CommentReplyItem
           key={reply.id}
+          id={reply.id}
+          commentId={props.commentId}
           content={reply.content}
           replyingTo={reply.replyingTo}
           user={reply.user}

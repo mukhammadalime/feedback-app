@@ -200,3 +200,29 @@
     justify-self: right;
   }
 }
+
+.replying-box {
+  display: grid;
+  background-color: $color-white;
+  padding: 1.5rem;
+  grid-template-columns: auto max-content;
+  margin-left: 4.6rem;
+  column-gap: 1.7rem;
+
+  &__textarea {
+    height: 8rem;
+    width: 100%;
+    border-radius: 0.7rem;
+    font-size: 1.5rem;
+    color: #8c92b3;
+    font-weight: 400;
+    border: none;
+    background-color: rgb(140, 146, 179, 0.25);
+    padding: 2rem;
+    resize: none;
+
+    &:focus {
+      outline: 1.8px solid #4661e6;
+    }
+  }
+}
