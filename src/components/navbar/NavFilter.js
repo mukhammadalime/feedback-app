@@ -1,51 +1,49 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import FContext from "../../store/Fcontext";
 
 const NavFilter = () => {
-  const { changeFilterBy } = useContext(FContext);
-  const [selected, setSelected] = useState("all");
+  const { changeFilterBy, filteredBy } = useContext(FContext);
 
   const filterHandler = (e) => {
     if (e.target.className === "nav__filter") return;
     const type = e.target.dataset.type;
     changeFilterBy(type);
-    setSelected(type);
   };
 
   return (
     <div className="nav__filter" onClick={filterHandler}>
       <div
-        className={`btn-elements ${selected === "all" && "active"}`}
+        className={`btn-elements ${filteredBy === "all" && "active"}`}
         data-type={"all"}
       >
         All
       </div>
       <div
-        className={`btn-elements ${selected === "ui" && "active"}`}
+        className={`btn-elements ${filteredBy === "ui" && "active"}`}
         data-type={"ui"}
       >
         UI
       </div>
       <div
-        className={`btn-elements ${selected === "ux" && "active"}`}
+        className={`btn-elements ${filteredBy === "ux" && "active"}`}
         data-type={"ux"}
       >
         UX
       </div>
       <div
-        className={`btn-elements ${selected === "enhancement" && "active"}`}
+        className={`btn-elements ${filteredBy === "enhancement" && "active"}`}
         data-type={"enhancement"}
       >
         Enhancement
       </div>
       <div
-        className={`btn-elements ${selected === "bug" && "active"}`}
+        className={`btn-elements ${filteredBy === "bug" && "active"}`}
         data-type={"bug"}
       >
         Bug
       </div>
       <div
-        className={`btn-elements ${selected === "feature" && "active"}`}
+        className={`btn-elements ${filteredBy === "feature" && "active"}`}
         data-type={"feature"}
       >
         Feature

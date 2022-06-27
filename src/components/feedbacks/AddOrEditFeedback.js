@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useContext, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import FContext from "../../store/Fcontext";
@@ -5,6 +6,11 @@ import SelectCategory from "../UI/SelectCategory";
 import SelectStatus from "../UI/SelectStatus";
 
 const AddOrEditFeedback = (props) => {
+  const [errors, setErrors] = useState({
+    titleError: false,
+    descriptionError: false,
+  });
+
   const match = useLocation();
   let pathname = match.pathname.split("/")[1];
 
@@ -40,6 +46,16 @@ const AddOrEditFeedback = (props) => {
     const enteredCategory = categoryInput.toLowerCase();
     const id = feedbackCtx.feedbacks.length + 1;
 
+    if (enteredTitle.split("").length < 10) {
+      setErrors({ descriptionError: false, titleError: true });
+      return;
+    }
+
+    if (enteredDescription === "" || enteredDescription.length < 20) {
+      setErrors({ titleError: false, descriptionError: true });
+      return;
+    }
+
     feedbackCtx.addNewFeedback({
       id,
       title: enteredTitle,
@@ -50,14 +66,25 @@ const AddOrEditFeedback = (props) => {
       comments: [],
     });
 
-    navigate("/suggestions");
+    navigate(-1);
   };
 
+  // Edit current feedback
   const editFeedbackHandler = () => {
     const enteredTitle = titleInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
     const enteredStatus = statusInput.toLowerCase();
     const enteredCategory = categoryInput.toLowerCase();
+
+    if (enteredTitle.split("").length < 10) {
+      setErrors({ descriptionError: false, titleError: true });
+      return;
+    }
+
+    if (enteredDescription === "" || enteredDescription.length < 20) {
+      setErrors({ titleError: false, descriptionError: true });
+      return;
+    }
 
     feedbackCtx.editFeedback({
       id: editingFeedback.id,
@@ -101,12 +128,19 @@ const AddOrEditFeedback = (props) => {
           <input
             type="text"
             id="title"
-            className="new-feed__title--input"
+            className={`new-feed__title--input ${
+              errors.titleError && "form-error-outline"
+            }`}
             ref={titleInputRef}
             defaultValue={
               pathname === "edit-feedback" ? editingFeedback.title : ""
             }
           />
+          {errors.titleError && (
+            <label className="form-error" htmlFor="title">
+              Title should be at least 10 characteres
+            </label>
+          )}
         </div>
 
         {pathname === "new-feedback" && (
@@ -136,7 +170,9 @@ const AddOrEditFeedback = (props) => {
             etc.
           </p>
           <textarea
-            className="new-feed__detail--input"
+            className={`new-feed__detail--input ${
+              errors.descriptionError && "form-error-outline"
+            }`}
             cols="30"
             rows="10"
             ref={descriptionInputRef}
@@ -144,6 +180,11 @@ const AddOrEditFeedback = (props) => {
               pathname === "edit-feedback" ? editingFeedback.description : ""
             }
           ></textarea>
+          {errors.descriptionError && (
+            <label className="form-error">
+              Description should be at least 20 characters long
+            </label>
+          )}
         </div>
 
         {pathname === "new-feedback" && (

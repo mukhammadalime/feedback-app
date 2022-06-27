@@ -59,6 +59,11 @@
       border: none;
       margin-top: 2rem;
       padding: 0 1rem;
+      margin-bottom: 0.5rem;
+
+      &:focus {
+        outline: 1.8px solid #4661e6;
+      }
     }
   }
 
@@ -83,6 +88,11 @@
       border: none;
       padding: 1rem;
       resize: none;
+      margin-bottom: 0.5rem;
+
+      &:focus {
+        outline: 1.8px solid #4661e6;
+      }
     }
   }
 
@@ -98,4 +108,17 @@
       width: 100%;
     }
   }
+}
+
+.form-error {
+  color: red;
+  font-size: 1.3rem;
+}
+
+.form-error-outline {
+  outline: 1.8px solid red;
+}
+
+.form-focus-outline {
+  outline: 1.8px solid #4661e6;
 }

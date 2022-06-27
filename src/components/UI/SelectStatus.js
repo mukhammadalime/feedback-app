@@ -45,7 +45,9 @@ const SelectStatus = (props) => {
     <div className="sorting-input">
       <h5 className="primary-text-4">Status</h5>
       <p className="body-4">Choose a status for your feedback</p>
-      <div className="sorting-input--sort">
+      <div
+        className={`sorting-input--sort ${sortClicked && "form-focus-outline"}`}
+      >
         <p className="sorting-input--sort--text">{selected}</p>
         <img
           src={`/assets/shared/icon-arrow-${sortClicked ? "up" : "down"}.svg`}

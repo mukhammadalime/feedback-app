@@ -30,7 +30,6 @@ const feedbackReducer = (state, action) => {
     editingFeedback.title = action.editingFeedback.title;
     editingFeedback.category = action.editingFeedback.category;
     editingFeedback.description = action.editingFeedback.description;
-    console.log("editingFeedback:", editingFeedback);
 
     const updatedFeedbacks = [...state.feedbacks];
     updatedFeedbacks[editingFeedbackIndex] = editingFeedback;
