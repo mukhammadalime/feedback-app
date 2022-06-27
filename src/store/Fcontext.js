@@ -9,6 +9,7 @@ const FContext = React.createContext({
   addNewFeedback: (newFeedback) => {},
   editFeedback: (editingfeedback) => {},
   deleteFeedback: (deletingFeedbackId) => {},
+  addComment: (newComment) => {},
 });
 
 export default FContext;

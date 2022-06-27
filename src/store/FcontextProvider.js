@@ -5,6 +5,7 @@ import data from "../data/data";
 const ADD_NEW_FEEDBACK = "ADD_NEW_FEEDBACK";
 const EDIT_FEEDBACK = "EDIT_FEEDBACK";
 const DELETE_FEEDBACK = "DELETE_FEEDBACK";
+const ADD_COMMENT = "ADD_COMMENT";
 
 const defaultFeedbackState = {
   feedbacks: data.productRequests,
@@ -52,6 +53,29 @@ const feedbackReducer = (state, action) => {
     };
   }
 
+  if (action.type === ADD_COMMENT) {
+    const comment = action.newComment;
+    const commentingFeedbackIndex = state.feedbacks.findIndex(
+      (feedback) => feedback.id === comment.feedbackId
+    );
+    const commentingFeedback = state.feedbacks[commentingFeedbackIndex];
+
+    commentingFeedback.comments.push({
+      id: commentingFeedback.comments
+        ? commentingFeedback.comments.length + 1
+        : 1,
+      content: comment.content,
+      user: comment.user,
+    });
+
+    const updatedFeedbacks = [...state.feedbacks];
+    updatedFeedbacks[commentingFeedbackIndex] = commentingFeedback;
+
+    return {
+      feedbacks: updatedFeedbacks,
+    };
+  }
+
   return defaultFeedbackState;
 };
 
@@ -83,15 +107,21 @@ const FcontextProvider = (props) => {
     dispatchFeedbackState({ type: DELETE_FEEDBACK, deletingFeedbackId });
   };
 
+  const addCommentHandler = (newComment) => {
+    dispatchFeedbackState({ type: ADD_COMMENT, newComment });
+  };
+
   const feedbackContext = {
     sortedBy: sorted,
     filteredBy: filtered,
+    currentUser: data.currentUser,
     feedbacks: feedbackState.feedbacks,
     changeSortedBy: changeSortedByHandler,
     changeFilterBy: changeFilterByHandler,
     addNewFeedback: addNewFeedbackHandler,
     editFeedback: editFeedbackHandler,
     deleteFeedback: deleteFeedbackHandler,
+    addComment: addCommentHandler,
   };
 
   return (

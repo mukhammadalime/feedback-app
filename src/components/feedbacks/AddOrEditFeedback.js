@@ -46,7 +46,7 @@ const AddOrEditFeedback = (props) => {
     const enteredCategory = categoryInput.toLowerCase();
     const id = feedbackCtx.feedbacks.length + 1;
 
-    if (enteredTitle.split("").length < 10) {
+    if (enteredTitle.length < 10) {
       setErrors({ descriptionError: false, titleError: true });
       return;
     }
@@ -76,7 +76,7 @@ const AddOrEditFeedback = (props) => {
     const enteredStatus = statusInput.toLowerCase();
     const enteredCategory = categoryInput.toLowerCase();
 
-    if (enteredTitle.split("").length < 10) {
+    if (enteredTitle.length < 10) {
       setErrors({ descriptionError: false, titleError: true });
       return;
     }
