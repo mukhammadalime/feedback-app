@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import FContext from "../../store/Fcontext";
+import config from "../../config.json";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -17,9 +18,9 @@ const AuthForm = () => {
 
     let url;
     if (isLogin) {
-      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVf1WRonEqDX0Ws8z3SRhVmIzZb7Xc_Rk`;
+      url = config.FIREBASE_LOGIN;
     } else {
-      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBVf1WRonEqDX0Ws8z3SRhVmIzZb7Xc_Rk`;
+      url = config.FIREBASE_SINGUP;
     }
 
     const response = await fetch(url, {
