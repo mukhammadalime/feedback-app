@@ -119,12 +119,15 @@ const feedbackReducer = (state, action) => {
 };
 
 const FcontextProvider = (props) => {
+  let initialToken = localStorage.getItem("token");
   const [sorted, setSorted] = useState("Most Upvotes");
   const [filtered, setFiltered] = useState("all");
   const [feedbackState, dispatchFeedbackState] = useReducer(
     feedbackReducer,
     defaultFeedbackState
   );
+  const [token, setToken] = useState(initialToken);
+  const userLoggedIn = !!token;
 
   const changeSortedByHandler = (sortedBy) => {
     setSorted(sortedBy);
@@ -154,9 +157,21 @@ const FcontextProvider = (props) => {
     dispatchFeedbackState({ type: ADD_REPLY, newReply });
   };
 
+  const loginHandler = (token) => {
+    setToken(token);
+    localStorage.setItem("token", token);
+  };
+
+  const logoutHandler = () => {
+    setToken(null);
+    localStorage.removeItem("token");
+  };
+
   const feedbackContext = {
     sortedBy: sorted,
     filteredBy: filtered,
+    isLoggedIn: userLoggedIn,
+    token,
     currentUser: data.currentUser,
     feedbacks: feedbackState.feedbacks,
     changeSortedBy: changeSortedByHandler,
@@ -166,6 +181,8 @@ const FcontextProvider = (props) => {
     deleteFeedback: deleteFeedbackHandler,
     addComment: addCommentHandler,
     addReply: addReplyHandler,
+    login: loginHandler,
+    logout: logoutHandler,
   };
 
   return (

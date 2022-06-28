@@ -1,43 +1,58 @@
-import Suggestions from "./components/suggestions/Suggestions";
-import NavBar from "./components/navbar/NavBar";
-import FcontextProvider from "./store/FcontextProvider";
 import { Route, Routes, Navigate } from "react-router-dom";
 import AddOrEditFeedback from "./components/feedbacks/AddOrEditFeedback";
 import FeedbackDetail from "./components/feedbacks/FeedbackDetail";
 import RoadMap from "./components/roadmap/RoadMap";
-import MainHeader from "./components/header/MainHeader";
+import FContext from "./store/Fcontext";
+import { useContext } from "react";
+import Layout from "./components/layout/Layout";
+import AuthPage from "./pages/AuthPage";
+import SuggestionsPage from "./pages/SuggestionsPage";
 
 const App = () => {
+  const { isLoggedIn } = useContext(FContext);
+
   return (
-    <FcontextProvider>
+    <Layout>
       <Routes>
-        <Route path="/" element={<Navigate to="/suggestions" />} />
         <Route
-          path="/suggestions"
+          path="/"
           element={
-            <>
-              <MainHeader />
-              <div className="container">
-                <NavBar />
-                <Suggestions />
-              </div>
-            </>
+            isLoggedIn ? (
+              <Navigate to="/suggestions" />
+            ) : (
+              <Navigate to="/auth" />
+            )
           }
         />
-        <Route path="/new-feedback" element={<AddOrEditFeedback />} />
+
+        {!isLoggedIn && <Route path="/auth" element={<AuthPage />} />}
+
+        <Route
+          path="/suggestions"
+          element={isLoggedIn ? <SuggestionsPage /> : <Navigate to="/auth" />}
+        />
+
+        <Route
+          path="/new-feedback"
+          element={isLoggedIn ? <AddOrEditFeedback /> : <Navigate to="/auth" />}
+        />
 
         <Route
           path="/feedback-detail/:feedbackId"
-          element={<FeedbackDetail />}
+          element={isLoggedIn ? <FeedbackDetail /> : <Navigate to="/auth" />}
         />
 
         <Route
           path="/edit-feedback/:feedbackId"
-          element={<AddOrEditFeedback />}
+          element={isLoggedIn ? <AddOrEditFeedback /> : <Navigate to="/auth" />}
         />
-        <Route path="/roadmap" element={<RoadMap />} />
+
+        <Route
+          path="/roadmap"
+          element={isLoggedIn ? <RoadMap /> : <Navigate to="/auth" />}
+        />
       </Routes>
-    </FcontextProvider>
+    </Layout>
   );
 };
 
