@@ -1,20 +1,21 @@
-import NumberOfFeedbacks from "../utils/NumberOfFeedbacks";
 import RoadMapHeader from "./RoadMapHeader";
 import RoadMapItemBox from "./RoadMapItemBox";
 import RoadMapStatuses from "./RoadMapStatuses";
+import NumberOfFeedbacks from "../utils/NumberOfFeedbacks";
 
 const RoadMap = () => {
-  const { plannedFeedbacks, liveFeedbacks, inProgressFeedbacks } =
-    NumberOfFeedbacks();
+  const data = NumberOfFeedbacks();
+  // Getting feedbacks from firebase takes time. So we need not to run the rest of the component untill data comes. Otherwise, we will get an error
+  if (!data || data === undefined) return;
 
   return (
     <div className="road-map">
       <RoadMapHeader />
 
       <RoadMapStatuses
-        live={liveFeedbacks.length}
-        inProgress={inProgressFeedbacks.length}
-        planned={plannedFeedbacks.length}
+        live={data.liveFeedbacks.length}
+        inProgress={data.inProgressFeedbacks.length}
+        planned={data.plannedFeedbacks.length}
       />
 
       <div className="road-map__content">

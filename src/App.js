@@ -1,12 +1,13 @@
-import { Route, Routes, Navigate } from "react-router-dom";
-import AddOrEditFeedback from "./components/feedbacks/AddOrEditFeedback";
-import FeedbackDetail from "./components/feedbacks/FeedbackDetail";
-import RoadMap from "./components/roadmap/RoadMap";
-import FContext from "./store/Fcontext";
 import { useContext } from "react";
-import Layout from "./components/layout/Layout";
 import AuthPage from "./pages/AuthPage";
+import FContext from "./store/Fcontext";
+import RoadMapPage from "./pages/RoadMapPage";
+import Layout from "./components/layout/Layout";
 import SuggestionsPage from "./pages/SuggestionsPage";
+import AddFeedbackPage from "./pages/AddFeedbackPage";
+import { Route, Routes, Navigate } from "react-router-dom";
+import FeedbackDetailPage from "./pages/FeedbackDetailPage";
+import EditFeedback from "./components/feedbacks/EditFeedback";
 
 const App = () => {
   const { isLoggedIn } = useContext(FContext);
@@ -34,22 +35,24 @@ const App = () => {
 
         <Route
           path="/new-feedback"
-          element={isLoggedIn ? <AddOrEditFeedback /> : <Navigate to="/auth" />}
+          element={isLoggedIn ? <AddFeedbackPage /> : <Navigate to="/auth" />}
         />
 
         <Route
           path="/feedback-detail/:feedbackId"
-          element={isLoggedIn ? <FeedbackDetail /> : <Navigate to="/auth" />}
+          element={
+            isLoggedIn ? <FeedbackDetailPage /> : <Navigate to="/auth" />
+          }
         />
 
         <Route
           path="/edit-feedback/:feedbackId"
-          element={isLoggedIn ? <AddOrEditFeedback /> : <Navigate to="/auth" />}
+          element={isLoggedIn ? <EditFeedback /> : <Navigate to="/auth" />}
         />
 
         <Route
           path="/roadmap"
-          element={isLoggedIn ? <RoadMap /> : <Navigate to="/auth" />}
+          element={isLoggedIn ? <RoadMapPage /> : <Navigate to="/auth" />}
         />
       </Routes>
     </Layout>

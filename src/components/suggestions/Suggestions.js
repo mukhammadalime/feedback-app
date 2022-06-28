@@ -1,6 +1,5 @@
-import React from "react";
-import SuggestionsHeader from "./SuggestionsHeader";
 import Feedbacks from "../feedbacks/Feedbacks";
+import SuggestionsHeader from "./SuggestionsHeader";
 
 const Suggestions = () => {
   return (

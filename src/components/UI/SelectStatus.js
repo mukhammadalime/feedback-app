@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import SelectedIcon from "../icons/SelectedIcon";
 
 const SelectStatus = (props) => {
@@ -9,9 +9,7 @@ const SelectStatus = (props) => {
     setSortClicked((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    props.getStatusInput(selected);
-  }, [props, selected]);
+  props.getStatusInput(selected);
 
   const selectStatus = (e) => {
     const target = e.target.dataset.type;

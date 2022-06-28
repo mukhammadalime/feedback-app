@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
-const AddFeedbackButton = () => {
+const AddFeedbackButton = ({ margin }) => {
+  margin = margin ? { marginTop: "2rem" } : {};
   return (
-    <Link to="/new-feedback" className="btn-purple">
+    <Link to="/new-feedback" className="btn-purple" style={margin}>
       + Add Feedback
     </Link>
   );

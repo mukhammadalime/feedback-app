@@ -1,10 +1,9 @@
 // DONE
 - Add form validation
 - Implement adding comment, replying comment
-
+- Create login, create account pages
+- Add firebase, firebase authentication
 
 // TODOS
-- Think about making SelectStatus and SelectCategory one component
-- Add firebase, firebase authentication
-- Create login, create account pages
 - Make it responsive
+- Think about making SelectCategory and SelectStatus in one component

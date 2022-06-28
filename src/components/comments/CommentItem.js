@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import FContext from "../../store/Fcontext";
-import CommentReplies from "./CommentReplies";
 import ReplyBox from "./ReplyBox";
+import useHttp from "../../hooks/use-http";
+import { addReply } from "../../backend/api";
+import CommentReplies from "./CommentReplies";
+import { useLocation } from "react-router-dom";
 
 const CommentItem = (props) => {
   const [showReplyBox, setShowReplyBox] = useState(false);
-  const feedbackCtx = useContext(FContext);
+  const { sendRequest: addReplyHandler, user } = useHttp(addReply);
   const match = useLocation();
   const feedbackId = match.pathname.split("/")[2];
   const replyingCommentId = props.id;
@@ -17,13 +17,13 @@ const CommentItem = (props) => {
   };
 
   const postReplyHandler = (replyContent) => {
-    feedbackCtx.addReply({
-      feedbackId: Number(feedbackId),
+    addReplyHandler({
+      feedbackId,
       replyingCommentId: Number(replyingCommentId),
       content: replyContent,
       replyingTo: props.user.username,
+      user: user,
     });
-
     setShowReplyBox(false);
   };
 

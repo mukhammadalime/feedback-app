@@ -1,32 +1,46 @@
-import React, { useContext } from "react";
 import FeedbackItem from "./FeedbackItem";
+import useHttp from "../../hooks/use-http";
 import FContext from "../../store/Fcontext";
+import { useContext, useEffect } from "react";
+import LoadingSpinner from "../UI/LoadingSpinner";
+import { getAllFeedbacks } from "../../backend/api";
+import filterByCategory from "../utils/FilterByCategory";
 import EmptySuggestions from "../suggestions/EmptySuggestions";
 
 const Feedbacks = () => {
-  const { sortedBy, filteredBy, feedbacks } = useContext(FContext);
+  const { sortedBy, filteredBy } = useContext(FContext);
+  const {
+    sendRequest,
+    status,
+    error,
+    data: loadedFeedbacks,
+  } = useHttp(getAllFeedbacks);
 
-  let filteredData = feedbacks.filter((feedback) => {
-    return filteredBy === "all" ? feedback : feedback.category === filteredBy;
-  });
+  useEffect(() => {
+    sendRequest();
+  }, [sendRequest]);
 
-  switch (sortedBy) {
-    case "Least Upvotes":
-      filteredData = filteredData.sort((a, b) => a.upvotes - b.upvotes);
-      break;
-    case "Most Comments":
-      filteredData = filteredData.sort(
-        (a, b) => b.comments?.length - a.comments?.length
-      );
-      break;
-    case "Least Comments":
-      filteredData = filteredData.sort(
-        (a, b) => a.comments?.length - b.comments?.length
-      );
-      break;
-    default:
-      filteredData = filteredData.sort((a, b) => b.upvotes - a.upvotes);
-      break;
+  if (status === "pending") {
+    return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return (
+      <div className="feedbacks">
+        <h2 style={{ margin: "0 auto" }}>{error}</h2>
+      </div>
+    );
+  }
+
+  if (status === "completed" && loadedFeedbacks.length === 0) {
+    return <EmptySuggestions />;
+  }
+
+  let filteredData = [];
+  // We need to wait until data comes from firebase
+  if (status === "completed" && loadedFeedbacks.length > 0) {
+    // Filtering feedbacks by category
+    filteredData = filterByCategory(sortedBy, loadedFeedbacks, filteredBy);
   }
 
   return (

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
+import NavRoadmapItem from "./NavRoadmapItem";
 import NumberOfFeedbacks from "../utils/NumberOfFeedbacks";
 
 const NavRoadmap = () => {
-  const { plannedFeedbacks, liveFeedbacks, inProgressFeedbacks } =
-    NumberOfFeedbacks();
-
+  const data = NumberOfFeedbacks();
+  if (!data || data === undefined) return;
   return (
     <div className="roadmap">
       <div className="roadmap__name-box">
@@ -13,54 +13,9 @@ const NavRoadmap = () => {
           View
         </Link>
       </div>
-
-      <div className="roadmap__planned">
-        <div
-          className="roadmap__planned--circle"
-          style={{ backgroundColor: "#f49f85" }}
-        >
-          &nbsp;
-        </div>
-        <p className="roadmap__planned--name body-1">Planned</p>
-        <h4
-          className="roadmap__planned--number body-1"
-          style={{ fontWeight: "600" }}
-        >
-          {plannedFeedbacks.length}
-        </h4>
-      </div>
-
-      <div className="roadmap__planned">
-        <div
-          className="roadmap__planned--circle"
-          style={{ backgroundColor: "#ad1fea" }}
-        >
-          &nbsp;
-        </div>
-        <p className="roadmap__planned--name body-1">In-Progress</p>
-        <h4
-          className="roadmap__planned--number body-1"
-          style={{ fontWeight: "600" }}
-        >
-          {inProgressFeedbacks.length}
-        </h4>
-      </div>
-
-      <div className="roadmap__planned">
-        <div
-          className="roadmap__planned--circle"
-          style={{ backgroundColor: "#62bcfa" }}
-        >
-          &nbsp;
-        </div>
-        <p className="roadmap__planned--name body-1">Live</p>
-        <h4
-          className="roadmap__planned--number body-1"
-          style={{ fontWeight: "600" }}
-        >
-          {liveFeedbacks.length}
-        </h4>
-      </div>
+      <NavRoadmapItem color="#f49f85" items={data.plannedFeedbacks} />
+      <NavRoadmapItem color="#ad1fea" items={data.inProgressFeedbacks} />
+      <NavRoadmapItem color="#62bcfa" items={data.liveFeedbacks} />
     </div>
   );
 };

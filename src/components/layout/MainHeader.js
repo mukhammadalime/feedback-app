@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import FContext from "../../store/Fcontext";
 
 const MainHeader = () => {
   const { isLoggedIn, logout } = useContext(FContext);
-
   const logoutHandler = () => {
     logout();
   };

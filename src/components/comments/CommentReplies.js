@@ -1,10 +1,9 @@
-import React from "react";
 import CommentReplyItem from "./CommentReplyItem";
 
 const CommentReplies = (props) => {
   return (
     <div className="comment__replies">
-      {props.replies.map((reply) => (
+      {props.replies?.map((reply) => (
         <CommentReplyItem
           key={reply.id}
           id={reply.id}

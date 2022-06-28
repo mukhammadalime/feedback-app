@@ -1,20 +1,30 @@
-import React, { useContext, useState } from "react";
+import useHttp from "../../hooks/use-http";
 import FContext from "../../store/Fcontext";
+import SortByOptions from "../UI/SortByOptions";
+import { getAllFeedbacks } from "../../backend/api";
 import ArrowUpDownIcon from "../icons/ArrowUpDownIcon";
-import SelectedIcon from "../icons/SelectedIcon";
 import SuggestionsIcon from "../icons/SuggestionsIcon";
+import { useContext, useEffect, useState } from "react";
 import AddFeedbackButton from "../UI/AddFeedbackButton";
 
-const SuggestionsHeader = (props) => {
+const SuggestionsHeader = () => {
   const [sortClicked, setSortClicked] = useState(false);
   const [selected, setSelected] = useState("Most Upvotes");
   const feedbackContext = useContext(FContext);
+  const { sendRequest, data, status, error } = useHttp(getAllFeedbacks);
 
-  let filteredData = feedbackContext.feedbacks.filter((feedback) => {
-    return feedbackContext.filteredBy === "all"
-      ? feedback
-      : feedback.category === feedbackContext.filteredBy;
-  });
+  useEffect(() => {
+    sendRequest();
+  }, [sendRequest]);
+
+  let filteredData = [];
+  if (status === "completed" && !error) {
+    filteredData = data.filter((feedback) => {
+      return feedbackContext.filteredBy === "all"
+        ? feedback
+        : feedback.category === feedbackContext.filteredBy;
+    });
+  }
 
   const sortByHandler = () => {
     setSortClicked((prevState) => !prevState);
@@ -28,24 +38,7 @@ const SuggestionsHeader = (props) => {
   };
 
   const sortByOptions = (
-    <div className="sort-box" onClick={selectHandler}>
-      <div className="sort-box__item" data-type="Most Upvotes">
-        Most Upvotes
-        {selected === "Most Upvotes" && <SelectedIcon />}
-      </div>
-      <div className="sort-box__item" data-type="Least Upvotes">
-        Least Upvotes
-        {selected === "Least Upvotes" && <SelectedIcon />}
-      </div>
-      <div className="sort-box__item" data-type="Most Comments">
-        Most Comments
-        {selected === "Most Comments" && <SelectedIcon />}
-      </div>
-      <div className="sort-box__item" data-type="Least Comments">
-        Least Comments
-        {selected === "Least Comments" && <SelectedIcon />}
-      </div>
-    </div>
+    <SortByOptions selectHandler={selectHandler} selected={selected} />
   );
 
   return (

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import FContext from "../../store/Fcontext";
 
 const NavFilter = () => {
@@ -15,39 +15,33 @@ const NavFilter = () => {
       <div
         className={`btn-elements ${filteredBy === "all" && "active"}`}
         data-type={"all"}
-      >
-        All
-      </div>
+        children="All"
+      />
       <div
         className={`btn-elements ${filteredBy === "ui" && "active"}`}
         data-type={"ui"}
-      >
-        UI
-      </div>
+        children="UI"
+      />
       <div
         className={`btn-elements ${filteredBy === "ux" && "active"}`}
         data-type={"ux"}
-      >
-        UX
-      </div>
+        children="UX"
+      />
       <div
         className={`btn-elements ${filteredBy === "enhancement" && "active"}`}
         data-type={"enhancement"}
-      >
-        Enhancement
-      </div>
+        children="Enhancement"
+      />
       <div
         className={`btn-elements ${filteredBy === "bug" && "active"}`}
         data-type={"bug"}
-      >
-        Bug
-      </div>
+        children="Bug"
+      />
       <div
         className={`btn-elements ${filteredBy === "feature" && "active"}`}
         data-type={"feature"}
-      >
-        Feature
-      </div>
+        children="Feature"
+      />
     </div>
   );
 };

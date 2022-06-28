@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import SelectedIcon from "../icons/SelectedIcon";
 
 const SelectCategory = (props) => {
   // When editing feedback, currently editing feedback's category will be in the form category
   // When adding new feedback, "Feature" will be the default category
-  const category = props.category
-    ? props.category[0].toUpperCase() + props.category.substring(1)
-    : "Feature";
+  let category = null;
+  if (props.category && props.category.length === 2)
+    category = props.category.toUpperCase();
+  else if (props.category)
+    category = props.category[0].toUpperCase() + props.category.substring(1);
+
+  category = category ? category : "Feature";
   const [selected, setSelected] = useState(category);
   const [sortClicked, setSortClicked] = useState(false);
 
   const showCategories = () => {
     setSortClicked((prevState) => !prevState);
   };
-
-  useEffect(() => {
-    props.getCategoryInput(selected);
-  }, [props, selected]);
+  props.getCategoryInput(selected);
 
   const selectCategory = (e) => {
     const target = e.target.dataset.type;

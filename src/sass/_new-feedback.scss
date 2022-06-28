@@ -115,10 +115,20 @@
   font-size: 1.3rem;
 }
 
+.http-error {
+  color: red;
+  font-size: 1.8rem;
+}
+
 .form-error-outline {
   outline: 1.8px solid red;
 }
 
 .form-focus-outline {
   outline: 1.8px solid #4661e6;
+}
+
+.add-feed-spinner {
+  display: flex;
+  justify-content: center;
 }

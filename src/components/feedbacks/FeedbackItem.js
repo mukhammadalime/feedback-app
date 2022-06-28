@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Feedback = (props) => {
@@ -24,9 +23,8 @@ const Feedback = (props) => {
         <h5
           className="feedback__comment-num body-1"
           style={{ fontWeight: "600" }}
-        >
-          {props.comments ? props.comments.length : "0"}
-        </h5>
+          children={props.comments ? props.comments.length : "0"}
+        />
       </Link>
       <div className="btn-elements feedback__btn-element">{props.status}</div>
     </div>

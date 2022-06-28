@@ -6,7 +6,6 @@ const ReplyBox = (props) => {
 
   const postReplyHandler = () => {
     const enteredReply = replyInputRef.current.value;
-
     if (enteredReply === "") {
       setReplyError(true);
       return;
@@ -24,7 +23,7 @@ const ReplyBox = (props) => {
         rows="10"
         placeholder="Please your reply comment here..."
         ref={replyInputRef}
-      ></textarea>
+      />
 
       <div className="replying-box__post btn-purple" onClick={postReplyHandler}>
         Post Reply

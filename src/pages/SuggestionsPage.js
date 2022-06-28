@@ -1,4 +1,3 @@
-import React from "react";
 import NavBar from "../components/navbar/NavBar";
 import Suggestions from "../components/suggestions/Suggestions";
 

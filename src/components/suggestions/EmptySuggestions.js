@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import AddFeedbackButton from "../UI/AddFeedbackButton";
 import IllustrationEmptyIcon from "../icons/IllustrationEmptyIcon";
 
 const EmptySuggestions = () => {
@@ -6,18 +6,12 @@ const EmptySuggestions = () => {
     <div className="main-empty">
       <div className="main-empty__content">
         <IllustrationEmptyIcon />
-        <h4 className="primary-text">There is no feedback yet.</h4>
+        <h4 className="primary-text" children="There is no feedback yet." />
         <p className="body-1" style={{ textAlign: "center" }}>
           Got a suggestion? Found a bug that needs to be squashed? We love
           hearing about new ideas to improve our app.
         </p>
-        <Link
-          to="/new-feedback"
-          className="btn-purple"
-          style={{ marginTop: "2rem" }}
-        >
-          + Add Feedback
-        </Link>
+        <AddFeedbackButton margin={true} />
       </div>
     </div>
   );

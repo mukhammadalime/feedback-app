@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import FContext from "../../store/Fcontext";
 import config from "../../config.json";
+import FContext from "../../store/Fcontext";
+import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -57,9 +57,10 @@ const AuthForm = () => {
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
         <div className="control">
-          <label htmlFor="email">Your Email</label>
+          <label htmlFor="email" children="Your Email" />
           <input type="email" id="email" required ref={emailInputRef} />
         </div>
+
         <div className="control">
           <label htmlFor="password">Your Password (6 characters)</label>
           <input
@@ -70,14 +71,15 @@ const AuthForm = () => {
           />
         </div>
         <div className="actions">
-          <button>{isLogin ? "Login" : "Create Account"}</button>
+          <button children={isLogin ? "Login" : "Create Account"} />
           <button
             type="button"
             className="toggle"
             onClick={switchAuthModeHandler}
-          >
-            {isLogin ? "Create new account" : "Login with existing account"}
-          </button>
+            children={
+              isLogin ? "Create new account" : "Login with existing account"
+            }
+          />
         </div>
       </form>
     </section>

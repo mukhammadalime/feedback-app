@@ -1,24 +1,44 @@
-import { useContext } from "react";
-import FContext from "../../store/Fcontext";
+import { useEffect } from "react";
+import { getAllFeedbacks } from "../../backend/api";
+import useHttp from "../../hooks/use-http";
 
 const NumberOfFeedbacks = () => {
-  const { feedbacks } = useContext(FContext);
+  const {
+    sendRequest: getFeedbacks,
+    data: loadedFeedbacks,
+    status,
+    error,
+  } = useHttp(getAllFeedbacks);
 
-  const plannedFeedbacks = feedbacks.filter(
-    (feedback) => feedback.status === "planned"
-  );
-  const liveFeedbacks = feedbacks.filter(
-    (feedback) => feedback.status === "live"
-  );
-  const inProgressFeedbacks = feedbacks.filter(
-    (feedback) => feedback.status === "in-progress"
-  );
+  useEffect(() => {
+    getFeedbacks();
+  }, [getFeedbacks]);
 
-  return {
-    plannedFeedbacks,
-    liveFeedbacks,
-    inProgressFeedbacks,
-  };
+  if (error) {
+    return {
+      plannedFeedbacks: 0,
+      liveFeedbacks: 0,
+      inProgressFeedbacks: 0,
+    };
+  }
+
+  if (status === "completed") {
+    const plannedFeedbacks = loadedFeedbacks.filter(
+      (feedback) => feedback.status === "planned"
+    );
+    const liveFeedbacks = loadedFeedbacks.filter(
+      (feedback) => feedback.status === "live"
+    );
+    const inProgressFeedbacks = loadedFeedbacks.filter(
+      (feedback) => feedback.status === "in-progress"
+    );
+
+    return {
+      plannedFeedbacks,
+      liveFeedbacks,
+      inProgressFeedbacks,
+    };
+  }
 };
 
 export default NumberOfFeedbacks;
