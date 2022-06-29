@@ -9,10 +9,15 @@
     width: 68.9rem;
     padding: 5.6rem 0 9rem;
   }
+
   @media (max-width: $phone) {
-    width: 37.5rem;
-    margin: auto 0;
+    width: inherit;
     padding: 4.8rem 2.4rem;
+  }
+
+  @media (max-width: $px390) {
+    width: inherit;
+    padding: 4.6rem 2.2rem;
   }
 }
 
@@ -39,8 +44,12 @@
   padding: 3.2rem;
   display: grid;
   row-gap: 2.4rem;
+
   @media (max-width: $phone) {
     padding: 2.4rem;
+  }
+  @media (max-width: $px390) {
+    padding: 2.2rem;
   }
 }
 
@@ -58,20 +67,6 @@
   }
 }
 
-// .border-right {
-//   position: relative;
-
-//   &::after {
-//     content: "";
-//     position: absolute;
-//     width: 1px;
-//     left: 1.9rem;
-//     top: 6.7rem;
-//     height: 26.7rem;
-//     background-color: rgba(0, 0, 0, 0.1);
-//   }
-// }
-
 .comment {
   display: grid;
 
@@ -85,9 +80,14 @@
     grid-template-columns: min-content auto;
 
     @media (max-width: $phone) {
+      width: inherit;
       row-gap: 1.4rem;
       column-gap: 1.6rem;
       grid-template-columns: min-content 1fr min-content;
+    }
+
+    @media (max-width: $px390) {
+      column-gap: 1.4rem;
     }
   }
 
@@ -102,9 +102,6 @@
   &__user-box {
     grid-row: 1/2;
     grid-column: 2/3;
-  }
-
-  &__name {
   }
 
   &__username {
@@ -152,6 +149,10 @@
     margin-left: 2.3rem;
   }
 
+  @media (max-width: $px390) {
+    margin-left: 2.1rem;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -187,11 +188,15 @@
     font-size: 1.5rem;
     color: #8c92b3;
     font-weight: 400;
-
     border: none;
     background-color: rgb(140, 146, 179, 0.25);
     padding: 2rem;
     resize: none;
+
+    @media (max-width: $phone) {
+      padding: 1.2rem;
+      font-size: 1.1rem;
+    }
     &:focus {
       outline: 1.8px solid #4661e6;
     }
@@ -222,20 +227,45 @@
   column-gap: 1.7rem;
   margin-bottom: 2rem;
 
+  @media (max-width: $phone) {
+    margin-left: 0;
+    width: 29.5rem;
+    grid-template-columns: max-content;
+    grid-template-rows: max-content min-content;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: $px390) {
+    width: 28.1rem;
+  }
+
+  &__post {
+    @media (max-width: $phone) {
+      justify-self: center;
+      margin-top: 1.5rem;
+    }
+  }
+
   &__textarea {
     height: 8rem;
-    width: 100%;
+    width: inherit;
     border-radius: 0.7rem;
     font-size: 1.5rem;
     color: #8c92b3;
     font-weight: 400;
     border: none;
     background-color: rgb(140, 146, 179, 0.25);
-    padding: 2rem;
+    padding: 1.5rem;
     resize: none;
 
     &:focus {
       outline: 1.8px solid #4661e6;
     }
+
+    // @media (max-width: $phone) {
+    //   padding: 1.2rem;
+    //   font-size: 1.1rem;
+    // }
   }
 }

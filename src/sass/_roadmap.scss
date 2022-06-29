@@ -1,6 +1,5 @@
 .road-map {
   width: 111rem;
-  margin: 0 auto 10rem;
   padding: 9.2rem 0 12rem;
   display: grid;
   justify-content: center;
@@ -13,10 +12,16 @@
 
   @media (max-width: $phone) {
     position: relative;
-    width: 37.5rem;
+    width: 41.4rem;
+    height: auto;
     display: grid;
-    row-gap: 8rem;
-    padding: 0 0 7rem;
+    row-gap: 8.5rem;
+    padding: 0;
+  }
+
+  @media (max-width: $px390) {
+    width: 39rem;
+    row-gap: 8.5rem;
   }
 
   &__header {
@@ -34,12 +39,13 @@
       margin-bottom: 0;
       padding: 2.4rem;
       height: 10rem;
+      width: 41.4rem;
     }
 
-    &--left {
-    }
-
-    &__add-feedback {
+    @media (max-width: $px390) {
+      padding: 2.2rem;
+      height: 9rem;
+      width: 39rem;
     }
   }
 
@@ -85,9 +91,17 @@
     justify-content: center;
     align-items: center;
   }
+  .not-active-status {
+    h5 {
+      color: rgb(100, 113, 150, 0.5);
+    }
+  }
 
   .active-status {
     position: relative;
+    h5 {
+      color: $color-primary-2;
+    }
 
     &::before {
       position: absolute;
@@ -97,9 +111,6 @@
       background-color: $color-purple;
       bottom: 0;
     }
-  }
-  .not-active-status {
-    color: rgb(100, 113, 150, 0.5);
   }
 }
 
@@ -115,7 +126,11 @@
   }
 
   @media (max-width: $phone) {
-    width: 32.7rem;
+    width: 35rem;
+  }
+
+  @media (max-width: $px390) {
+    width: 33rem;
   }
 }
 
@@ -146,9 +161,6 @@
     height: 0.8rem;
     width: 0.8rem;
     border-radius: 50%;
-  }
-
-  &__name {
   }
 
   &__content {
@@ -203,9 +215,6 @@
     grid-row: 4/5;
     grid-column: 2/3;
     justify-self: right;
-  }
-
-  &__comments--num {
   }
 }
 

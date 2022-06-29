@@ -1,13 +1,17 @@
 .auth {
-  margin: 3rem auto;
+  margin: 10rem auto;
   width: 95%;
   max-width: 35rem;
-  height: 35rem;
+  height: auto;
   border-radius: 6px;
   background-color: $color-primary;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 3rem;
   text-align: center;
+
+  @media (max-width: $tablet) {
+    margin: 7rem auto;
+  }
 }
 
 .auth h1 {
@@ -27,6 +31,10 @@
   font-weight: bold;
   margin-bottom: 0.5rem;
   font-size: 2rem;
+
+  @media (max-width: $tablet) {
+    font-size: 1.7rem;
+  }
 }
 
 .control input {

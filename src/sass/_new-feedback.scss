@@ -2,8 +2,8 @@
   width: 54rem;
   margin: 0 auto;
   display: grid;
-  row-gap: 8rem;
-  padding: 9.2rem 0 12rem;
+  row-gap: 6rem;
+  padding: 5rem 0 12rem;
 
   @media (max-width: $tablet) {
     margin: 0 auto 0;
@@ -12,8 +12,13 @@
   }
 
   @media (max-width: $phone) {
-    width: 32.7rem;
+    width: 35rem;
     padding: 3.4rem 0 9rem;
+  }
+
+  @media (max-width: $px390) {
+    width: 34rem;
+    padding: 3.2rem 0 8rem;
   }
 }
 
@@ -26,8 +31,6 @@
   display: grid;
   row-gap: 3rem;
 
-  @media (max-width: $tablet) {
-  }
   @media (max-width: $phone) {
     padding: 3.7rem 2.4rem 2.4rem;
   }
@@ -65,9 +68,6 @@
         outline: 1.8px solid #4661e6;
       }
     }
-  }
-
-  &__category {
   }
 
   &-sort-box {

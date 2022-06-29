@@ -11,19 +11,9 @@ html {
 body {
   font-family: "Jost", sans-serif;
   background-color: $color-secondary;
-  // background-color: #979797;
   height: auto;
-
-  // padding-top: 9.4rem;
-
-  // @media (max-width: $tablet) {
-  //   padding-top: 5.6rem;
-  // }
-
-  // @media (max-width: $phone) {
-  //   padding-top: 0;
-  // }
 }
+
 .hidden {
   display: none;
 }

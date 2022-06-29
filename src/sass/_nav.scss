@@ -4,13 +4,32 @@
   row-gap: 2.4rem;
 
   @media (max-width: $tablet) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: max-content max-content;
     column-gap: 1rem;
     width: 68.9rem;
   }
 
   @media (max-width: $phone) {
-    width: 40rem;
+    width: inherit;
+    grid-template-columns: min-content;
+    grid-template-rows: min-content max-content;
+    row-gap: 0;
+  }
+
+  &__main {
+    display: grid;
+    height: min-content;
+    row-gap: 2.4rem;
+
+    @media (max-width: $tablet) {
+      column-gap: 1rem;
+    }
+
+    @media (max-width: $phone) {
+      column-gap: 0;
+      row-gap: 2rem;
+      display: none;
+    }
   }
 
   &__name {
@@ -29,13 +48,21 @@
       width: 22.3rem;
       height: 17.8rem;
     }
+
     @media (max-width: $phone) {
-      background-image: url(../../public/assets/suggestions/mobile/background-header.png);
-      width: 37.5rem;
-      height: 7.2rem;
+      background-image: url(../../public/assets/suggestions/mobile/background-header-414.png);
+      width: 41.4rem;
+      height: 7.5rem;
       border-radius: 0;
       padding: 0 2.4rem;
       align-items: center;
+    }
+
+    @media (max-width: $px390) {
+      background-image: url(../../public/assets/suggestions/mobile/background-header-390.png);
+      width: 39rem;
+      height: 7.2rem;
+      padding: 0 2.2rem;
     }
   }
 
@@ -51,10 +78,41 @@
     @media (max-width: $tablet) {
       width: 22.3rem;
       height: 17.8rem;
+      grid-row: 1/2;
+      grid-column: 1/2;
     }
+
     @media (max-width: $phone) {
-      margin-bottom: 2.4rem;
+      grid-row: 1/2;
+      grid-column: 1/2;
     }
+  }
+}
+
+.nav-phone-container {
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: right;
+  height: 100vh;
+  width: 41.4rem;
+  z-index: 20;
+  position: absolute;
+  top: 7.5rem;
+  left: 0;
+
+  @media (max-width: $px390) {
+    width: 39rem;
+    top: 7.2rem;
+  }
+
+  .nav-phone-box {
+    background-color: $color-secondary;
+    padding: 2.4rem;
+  }
+
+  .nav_main-phone {
+    display: grid;
+    row-gap: 2rem;
   }
 }
 
@@ -118,30 +176,6 @@
   }
 }
 
-.nav__click-info {
-  width: 100%;
-  height: 100vh;
-  right: 0;
-  top: 7.2rem;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-
-  .nav__click-content {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 27.1rem;
-    height: 100%;
-    background-color: $color-secondary;
-    padding: 2.4rem;
-  }
-
-  // @media (max-width: $tablet) {
-  //   display: none;
-  // }
-}
-
 .roadmap {
   width: 25.5rem;
   height: 17.8rem;
@@ -153,6 +187,13 @@
 
   @media (max-width: $tablet) {
     width: 22.3rem;
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+
+  @media (max-width: $phone) {
+    grid-row: 2/3;
+    grid-column: 1/2;
   }
 
   &__name-box {
@@ -162,11 +203,7 @@
     margin-bottom: 2.4rem;
   }
 
-  &__name {
-  }
-
   &__view {
-    // border-bottom: 1px solid black;
     cursor: pointer;
   }
 
@@ -175,9 +212,6 @@
     grid-template-columns: min-content max-content 1fr;
     align-items: center;
     column-gap: 1.7rem;
-
-    &--name {
-    }
 
     &--circle {
       width: 0.8rem;
@@ -189,7 +223,19 @@
       justify-self: right;
     }
   }
+
   &__planned:not(last-child) {
     margin-bottom: 0.3rem;
+  }
+}
+
+.logout-btn-box {
+  @media (max-width: $tablet) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
+  @media (max-width: $phone) {
+    grid-row: 3/4;
+    grid-column: 1/2;
   }
 }

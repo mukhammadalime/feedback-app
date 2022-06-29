@@ -14,7 +14,7 @@ const NumberOfFeedbacks = () => {
     getFeedbacks();
   }, [getFeedbacks]);
 
-  if (error) {
+  if (error || status === "pending") {
     return {
       plannedFeedbacks: 0,
       liveFeedbacks: 0,

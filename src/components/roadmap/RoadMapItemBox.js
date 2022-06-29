@@ -34,7 +34,7 @@ const RoadMapItemBox = (props) => {
     );
 
     return (
-      <div className="status-box phone-hidden">
+      <div className={`status-box ${props.selectedType ? "" : "phone-hidden"}`}>
         <div className="status-info">
           <h4 className="primary-text-3">
             {props.type === "In-progress" ? "In Progress" : props.type}

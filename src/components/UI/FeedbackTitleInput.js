@@ -15,7 +15,7 @@ const FeedbackTitleInput = React.forwardRef((props, ref) => (
     />
     {props.error && (
       <label className="form-error" htmlFor="title">
-        Title should be at least 10 characteres
+        Title should be between 10 and 50 characteres.
       </label>
     )}
   </div>

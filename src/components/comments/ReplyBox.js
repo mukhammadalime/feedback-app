@@ -21,7 +21,6 @@ const ReplyBox = (props) => {
         }`}
         cols="30"
         rows="10"
-        placeholder="Please your reply comment here..."
         ref={replyInputRef}
       />
 
