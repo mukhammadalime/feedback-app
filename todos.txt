@@ -7,3 +7,4 @@
 // TODOS
 - Make it responsive
 - Think about making SelectCategory and SelectStatus in one component
+- Change readme.md 

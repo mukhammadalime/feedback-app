@@ -1,7 +1,10 @@
+import { useContext } from "react";
+import FContext from "../../store/Fcontext";
 import NavFilter from "./NavFilter";
 import NavRoadmap from "./NavRoadmap";
 
 const NavBar = () => {
+  const { logout } = useContext(FContext);
   return (
     <nav className="nav">
       <div className="nav__name">
@@ -22,6 +25,11 @@ const NavBar = () => {
       </div>
       <NavFilter />
       <NavRoadmap />
+      <div>
+        <div className="btn-purple logout-btn" onClick={() => logout}>
+          Logout
+        </div>
+      </div>
     </nav>
   );
 };

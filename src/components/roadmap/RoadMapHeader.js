@@ -1,17 +1,20 @@
 import GoBackButton from "../UI/GoBackButton";
 import AddFeedbackButton from "../UI/AddFeedbackButton";
 
-const RoadMapHeader = () => {
+const RoadMapHeader = (props) => {
   return (
-    <div className="road-map__header">
-      <div className="road-map__header--left">
-        <GoBackButton color={{ color: "#ffffff" }} />
-        <h4 className="primary-text" style={{ color: "#ffffff" }}>
-          Roadmap
-        </h4>
+    <>
+      <div className="road-map__header">
+        <div className="road-map__header--left">
+          <GoBackButton color={{ color: "#ffffff" }} />
+          <h4 className="primary-text" style={{ color: "#ffffff" }}>
+            Roadmap
+          </h4>
+        </div>
+        <AddFeedbackButton />
       </div>
-      <AddFeedbackButton />
-    </div>
+      <>{props.children}</>
+    </>
   );
 };
 

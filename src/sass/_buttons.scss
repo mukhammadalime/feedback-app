@@ -156,3 +156,12 @@
     }
   }
 }
+
+.logout-btn {
+  background-color: #373f68;
+  font-size: 1.7rem;
+  margin: 0 auto;
+  &:hover {
+    background-color: hwb(230 14% 62% / 0.768);
+  }
+}
