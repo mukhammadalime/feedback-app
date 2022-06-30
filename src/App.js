@@ -1,13 +1,13 @@
-import { useContext } from "react";
 import AuthPage from "./pages/AuthPage";
 import FContext from "./store/Fcontext";
+import React, { useContext } from "react";
 import RoadMapPage from "./pages/RoadMapPage";
 import Layout from "./components/layout/Layout";
 import SuggestionsPage from "./pages/SuggestionsPage";
 import AddFeedbackPage from "./pages/AddFeedbackPage";
+import EditFeedbackPage from "./pages/EditFeedbackPage";
 import { Route, Routes, Navigate } from "react-router-dom";
 import FeedbackDetailPage from "./pages/FeedbackDetailPage";
-import EditFeedback from "./components/feedbacks/EditFeedback";
 
 const App = () => {
   const { isLoggedIn } = useContext(FContext);
@@ -47,7 +47,7 @@ const App = () => {
 
         <Route
           path="/edit-feedback/:feedbackId"
-          element={isLoggedIn ? <EditFeedback /> : <Navigate to="/auth" />}
+          element={isLoggedIn ? <EditFeedbackPage /> : <Navigate to="/auth" />}
         />
 
         <Route
