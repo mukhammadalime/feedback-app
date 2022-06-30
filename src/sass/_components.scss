@@ -62,22 +62,44 @@
 
 .spinner {
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 8rem;
+  height: 8rem;
   justify-self: center;
   align-self: center;
+
+  @media (max-width: $tablet) {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  @media (max-width: $phone) {
+    width: 4rem;
+    height: 4rem;
+  }
 }
+
 .spinner:after {
   content: " ";
   display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
+  width: 6.4rem;
+  height: 6.4rem;
+  margin: 0.8rem;
   border-radius: 50%;
   border: 6px solid teal;
   border-color: teal transparent teal transparent;
   animation: spinner 1.2s linear infinite;
+
+  @media (max-width: $tablet) {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+
+  @media (max-width: $phone) {
+    width: 3rem;
+    height: 3rem;
+  }
 }
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);

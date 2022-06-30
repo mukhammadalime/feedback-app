@@ -80,7 +80,8 @@ export async function editFeedback(feedbackData) {
   if (!response.ok) {
     throw new Error(data.message || "Could not edit feedback");
   }
-  return null;
+  window.location.reload();
+  return data;
 }
 
 ///////////////////////////////////////////////////////////
